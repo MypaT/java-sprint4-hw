@@ -129,6 +129,16 @@ public class AutoTest {
         }
     }
 
+    // Печать истории просмотров
+    private void printHistory() {
+        System.out.println("История просмотренных задач:");
+        int i = 1;
+        for (Task historyTask : historyManager.getHistory()) {
+            System.out.println(i + ". " + historyTask);
+            i++;
+        }
+    }
+
     // Тестирование истории просмотров задач
     public void testingHistoryManager() {
         // Создайте 2 задачи, один эпик с 2 подзадачами, а другой эпик с 1 подзадачей
@@ -172,13 +182,15 @@ public class AutoTest {
             System.out.println(subtask);
         }
 
-        historyManager.printHistory();
+        System.out.println("");
+        printHistory();
 
         taskManager.getTaskById(idTask2);
         taskManager.getEpicById(idEpic1);
         taskManager.getSubtaskById(idSubtask3);
 
-        historyManager.printHistory();
+        System.out.println("");
+        printHistory();
 
         taskManager.getTaskById(idTask2);
         taskManager.getEpicById(idEpic2);
@@ -187,12 +199,35 @@ public class AutoTest {
         taskManager.getEpicById(idEpic2);
         taskManager.getSubtaskById(idSubtask2);
 
-        historyManager.printHistory();
+        System.out.println("");
+        printHistory();
 
         taskManager.getTaskById(idTask1);
-        taskManager.getEpicById(idEpic2);
+        taskManager.getEpicById(idEpic1);
         taskManager.getSubtaskById(idSubtask2);
 
-        historyManager.printHistory();
+        System.out.println("");
+        printHistory();
+
+        //taskManager.deleteAllTasks();
+        taskManager.deleteAllEpics();
+        //taskManager.deleteAllSubtasks();
+
+        System.out.println("");
+        printHistory();
+
+        // Распечатайте списки эпиков, задач и подзадач
+        System.out.println("");
+        System.out.println("Проверка после создания задач всех типов");
+        for (Task task : taskManager.getListTasks()) {
+            System.out.println(task);
+        }
+        for (Epic epic : taskManager.getListEpics()) {
+            System.out.println(epic);
+        }
+        for (Subtask subtask : taskManager.getListSubtasks()) {
+            System.out.println(subtask);
+        }
+
     }
 }

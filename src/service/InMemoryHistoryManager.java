@@ -2,36 +2,29 @@ package service;
 
 import model.Task;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private final List<Task> historyTasks = new ArrayList<>();
+    private final LinkedList<Task> historyTasks = new LinkedList<>();
 
-    //Пометить задачи как просмотренные
     @Override
     public void add(Task task) {
         while (historyTasks.size() >= 10) {
-            historyTasks.remove(0);
+            historyTasks.removeFirst();
         }
 
         historyTasks.add(task);
     };
 
-    //Получить историю просмотренных задач
     @Override
-    public List<Task> getHistory() {
-        return historyTasks;
+    public void delete(Task task) {
+        if (historyTasks.contains(task)) historyTasks.removeAll(Collections.singletonList(task));
     };
 
-    //Печать истории просмотренных задач
     @Override
-    public void printHistory() {
-        System.out.println("История просмотренных задач:");
-        int i = 1;
-        for (Task historyTask : historyTasks) {
-            System.out.println(i + ". " + historyTask);
-            i++;
-        }
-    }
+    public List<Task> getHistory() {
+        return new LinkedList<>(historyTasks);
+    };
 }

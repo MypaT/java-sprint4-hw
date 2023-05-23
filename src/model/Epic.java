@@ -1,9 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Epic extends Task {
-    ArrayList<Integer> subtasks = new ArrayList<>();
+    List<Integer> subtasks = new ArrayList<>();
 
     // Конструктор для создания
     public Epic(String name, String description) {
@@ -11,15 +12,15 @@ public class Epic extends Task {
     }
 
     // Конструктор для обновления
-    public Epic(int id, String name, String description, States state) {
-        super(id, name, description, state);
+    public Epic(int id, String name, String description) {
+        super(id, name, description, States.NEW);
     }
 
-    public ArrayList<Integer> getSubtasks() {
+    public List<Integer> getSubtasks() {
         return subtasks;
     }
 
-    public void setSubtasks(ArrayList<Integer> subtasks) {
+    public void setSubtasks(List<Integer> subtasks) {
         this.subtasks = subtasks;
     }
 
