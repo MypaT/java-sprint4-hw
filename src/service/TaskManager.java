@@ -30,8 +30,8 @@ public interface TaskManager {
     void updateEpic(Epic epic);
 
     void deleteEpicById(Integer id);
-
-    List<Integer> getSubtask(Epic epic);
+    // Получение списка подзадач определенного эпика
+    List<Integer> getListSubtasksSpecificEpic(Epic epic);
 
     List<Subtask> getListSubtasks();
 

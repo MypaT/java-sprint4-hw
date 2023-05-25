@@ -5,6 +5,8 @@ import model.States;
 import model.Subtask;
 import model.Task;
 
+import java.util.ArrayList;
+
 // класс для автотестов
 public class AutoTest {
     TaskManager taskManager = Managers.getDefault();
@@ -218,7 +220,7 @@ public class AutoTest {
 
         // Распечатайте списки эпиков, задач и подзадач
         System.out.println("");
-        System.out.println("Проверка после создания задач всех типов");
+        System.out.println("Проверка после удаления задач всех типов");
         for (Task task : taskManager.getListTasks()) {
             System.out.println(task);
         }
@@ -228,6 +230,5 @@ public class AutoTest {
         for (Subtask subtask : taskManager.getListSubtasks()) {
             System.out.println(subtask);
         }
-
     }
 }
